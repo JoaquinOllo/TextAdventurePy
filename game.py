@@ -61,4 +61,5 @@ def most_powerful_weapon(inventory):
             pass
         return best_weapon
 
+world.parse_world_dsl()
 play()
