@@ -5,9 +5,9 @@ import world
 # continue at chapter 13, solve bug right before starting with "expanding the world"
 
 def play():
-    player = Player()
     print ("Escape from Cave terror!")
     world.parse_world_dsl()
+    player = Player()    
     while player.is_alive() and not player.victory:
         room = world.tile_at(player.x, player.y)
         print(room.intro_text())
