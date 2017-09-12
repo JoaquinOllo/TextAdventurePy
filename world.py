@@ -130,6 +130,9 @@ Someone dropped some gold. You pick it up.
 """
 
 class VictoryTile(MapTile):
+    def modify_player(self, player):
+        player.victory = True
+    
     def intro_text(self):
         return """
 You see a bright light in the distance...

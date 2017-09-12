@@ -7,11 +7,15 @@ import world
 def play():
     player = Player()
     print ("Escape from Cave terror!")
-    while True:
+    world.parse_world_dsl()
+    while player.is_alive() and not player.victory:
         room = world.tile_at(player.x, player.y)
         print(room.intro_text())
         room.modify_player(player)
-        choose_action(room,player)
+        if player.is_alive() and not player.victory:
+            choose_action(room,player)
+        elif not player.is_alive():
+            print("Your journey has come to an early end!")
 
 def get_available_actions(room, player):
     actions = OrderedDict()
@@ -62,6 +66,5 @@ def most_powerful_weapon(inventory):
         except AttributeError:
             pass
         return best_weapon
-
-world.parse_world_dsl()
+    
 play()
